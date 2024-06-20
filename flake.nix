@@ -14,7 +14,7 @@
 
         blst = iohk-nix.outputs.pkgs.libblst;
 
-in rec {
+      in rec {
         # For `nix build` & `nix run`:
         defaultPackage = pkgs.stdenv.mkDerivation {
           name = "libposeidon";
