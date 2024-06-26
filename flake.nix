@@ -33,6 +33,23 @@
             cp libposeidon.so $out/lib/
             mkdir -p $out/include
             cp poseidon.h $out/include/
+
+            # Adding pkg-config support
+            mkdir -p $out/lib/pkgconfig
+            cat <<EOF > $out/lib/pkgconfig/libposeidon.pc
+            prefix=$out
+            exec_prefix=''\\''${prefix}
+            libdir=''\\''${exec_prefix}/lib
+            includedir=''\\''${prefix}/include
+
+            Name: libposeidon
+            Description: Library for the Poseidon cryptographic functions
+            URL: https://github.com/perturbing/poseidon
+            Version: 0.1
+
+            Cflags: -I''\\''${includedir}
+            Libs: -L''\\''${libdir} -lposeidon
+            EOF
           '';
         };
 
