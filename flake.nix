@@ -19,6 +19,7 @@
         defaultPackage = pkgs.stdenv.mkDerivation {
           name = "libposeidon";
           src = ./src;
+          version = "1.0";
           buildInputs = [ pkgs.gcc blst ];
 
           # Build phase
